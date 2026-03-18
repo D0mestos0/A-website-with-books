@@ -53,3 +53,14 @@ class AuthPageLocators:
     BUTTON_LOGIN = (By.XPATH, "//button[@name='login_submit']")
     SUCCESS_MSG = (By.CSS_SELECTOR, ".alertinner.wicon")
     ERRORS = (By.CSS_SELECTOR, ".alert.alert-danger")
+
+
+class CheckOutLocators:
+    DROPDOWN_ELEMENT = (By.XPATH, "//select[@id='id_title']")
+    NAME_FIELD = (By.XPATH, "//input[@id='id_first_name']")
+    LAST_NAME = (By.ID, "id_last_name")
+    FIRST_ADDRESS = (By.ID, "id_line1")
+    CITY = (By.ID, "id_line4")
+    POSTCODE = (By.ID, "id_postcode")
+    COUNTRY_DROPDOWN = (By.ID, "id_country")
+    BUTTON = (By.CSS_SELECTOR, ".btn.btn-lg.btn-primary")

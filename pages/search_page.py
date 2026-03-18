@@ -6,7 +6,6 @@ import time
 
 class Search_Page(Base_Page):
 
-    # Вызывается АВТОМАТИЧЕСКИ при создании объекта (в тестах)
     def __init__(self, browser):
         super().__init__(browser)
 

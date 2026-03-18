@@ -8,7 +8,7 @@ from pages.catalogue_page import Catalogue_page
 
 class Test_delete_the_product:
     @pytest.mark.xfail(reason="Кнопка удаления не работает!")
-    def test_delete_the_book_from_basket(self, browser):  # В классе ВСЕГДА нужен self первым параметром!
+    def test_delete_the_book_from_basket(self, browser): 
         catalogue = Catalogue_page(browser)
         basket = Basket_page(browser)
 

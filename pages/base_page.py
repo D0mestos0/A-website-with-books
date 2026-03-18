@@ -1,6 +1,3 @@
-# это класс, в котором открытие ссылок, клики, ожидания
-
-
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
@@ -9,63 +6,28 @@ import time
 class Base_Page:
     """Базовый класс для всех страниц"""
 
-    # Инициализация - вызывается автоматически при создании объекта
-    # Вызываем __init__ родителя чтобы создать self.browser
-    def __init__(
-        self, browser
-    ):  # __init__ создает переменные ОБЪЕКТА, которые будут доступны во ВСЕХ методах через self
-        self.browser = browser  # снаружи (потому что browser - это сложная переменная). Создаю переменную self.browser и сохраняю туда browser
-        self.wait = WebDriverWait(browser, 15)  # создаю это прямо здесь
+    def __init__(self, browser):
+        self.browser = browser
+        self.wait = WebDriverWait(browser, 15)
 
     def log(self, message):
         timestamp = time.strftime("%H:%M:%S")
         print(f"[{timestamp}] {message} \n")
 
-    def open_url(self, url):  # <- url ПАРАМЕТР!
+    def open_url(self, url):
         """Открыть любой URL"""
         self.log("Браузер открывается")
         self.browser.get(url)
         self.log(f"Открыта страница: {url}")
 
     def find_element(self, locator):
-        """
-        Найти ОДИН элемент на ВСЕЙ странице
-        :param locator: Кортеж (By.XXX, "selector")
-        :return: WebElement
-        """
         return self.wait.until(EC.visibility_of_element_located(locator))
 
     def find_elements(self, locator):
-        """
-        Найти ВСЕ элементы на ВСЕЙ странице
-        :param locator: Кортеж (By.XXX, "selector")
-        :return: Список WebElement
-        """
         return self.browser.find_elements(*locator)
-        #                                  ^
-        #                                  Распаковка!
 
     def find_element_in_element(self, parent_element, locator):
-        """
-        Найти ОДИН элемент ВНУТРИ другого элемента
-
-        :param parent_element: Родительский WebElement
-        :param locator: Кортеж (By.XXX, "selector")
-        :return: WebElement
-        """
         return parent_element.find_element(locator[0], locator[1])
-        #                                  ^^^^^^^^^^  ^^^^^^^^^^
-        #                                  Распаковка вручную!
-
-    def find_elements_in_element(self, parent_element, locator):
-        """
-        Найти ВСЕ элементы ВНУТРИ другого элемента
-
-        :param parent_element: Родительский WebElement
-        :param locator: Кортеж (By.XXX, "selector")
-        :return: Список WebElement
-        """
-        return parent_element.find_elements(locator[0], locator[1])
 
     def click_element(self, locator):
         """Клик по кнопке"""

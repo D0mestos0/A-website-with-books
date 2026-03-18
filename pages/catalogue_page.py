@@ -1,10 +1,3 @@
-"""
-Страница каталога, на которой будут следующие действия:
-- найти конкретный товар
-- нажать на кнопку "Добавить в корзину"
-- потом нажать на "Посмотреть корзину"
-"""
-
 from pages.base_page import Base_Page
 from locators.locators import CataloguePageLocators
 from selenium.webdriver.common.keys import Keys

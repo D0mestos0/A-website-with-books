@@ -1,7 +1,3 @@
-"""Что здесь происходит:
-- подтверждение наличия товара в корзине
-"""
-
 import time
 from pages.base_page import Base_Page
 from locators.locators import BasketPageLocators
@@ -16,7 +12,7 @@ class Basket_page(Base_Page):
         self.open_url(url)
 
     def verify_item_in_the_basket(self, expected_title):
-        """Проверить что товар есть в корзине"""
+        """Проверить, что товар есть в корзине"""
         basket_items = self.find_elements(
             BasketPageLocators.BASKET_ITEMS
         )  # это список class="basket-items"
@@ -51,7 +47,7 @@ class Basket_page(Base_Page):
 
     def get_price(self):
         """Получаю стоимость корзины"""
-        # сначала получаю стоимость корзины ДО удаления (там такая же пляска элемент внутри элемента)
+        # сначала получаю стоимость корзины ДО удаления (элемент внутри элемента)
         tr_elements = self.find_elements(
             BasketPageLocators.TR_TAG
         )  # это будет список из tr
@@ -65,10 +61,6 @@ class Basket_page(Base_Page):
                     price = self.find_element_in_element(tr, BasketPageLocators.PRICE)
                     print(f"Стоимость корзины: {price.text}")
                     return price.text
-
-            # Если не нашли TR с "Всего" - корзина пустая
-            # print("Корзина пустая (не нашли TR с 'Всего')")
-            # return "0"
         except Exception as e:
             print(f"Ошибка при получении цены {e}")
             return "0"
@@ -82,15 +74,15 @@ class Basket_page(Base_Page):
         # нахожу кнопку удаления
         delete_button = self.find_element(BasketPageLocators.DELETE_BUTTON)
         delete_button.click()
-        print("🗑️ Кликнули на 'Удалить'")
+        print("Кликнули на 'Удалить'")
 
         time.sleep(2)
 
         # после удаления снова получаю по идее обновленную цену
         new_price = self.get_price()
-        print(f"💰 Цена ПОСЛЕ удаления: {new_price}")
+        print(f"Цена ПОСЛЕ удаления: {new_price}")
         assert (
             old_price != new_price
         ), f"Стоимость корзины не поменялась! Было: {old_price}, Стало: {new_price}"
 
-        print(f"✅ Товар удален! Было: {old_price}, Стало: {new_price}")
+        print(f"Товар удален! Было: {old_price}, Стало: {new_price}")
