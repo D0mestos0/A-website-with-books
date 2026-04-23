@@ -46,6 +46,7 @@ jobs:
       uses: actions/download-artifact@v4
       with: 
         name: allure-results
+        path: allure-results
     - run: allure generate -c allure-results -o allure-report
     - name: Save allure report
       uses: actions/upload-artifact@v4
@@ -71,6 +72,8 @@ jobs:
         branch: gh-pages
         folder: allure-report
         clean: true 
+    - name: Report URL
+      run: echo "https://d0mestos0.github.io/A-website-with-books/"
       
 
 
