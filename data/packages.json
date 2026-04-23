@@ -1,1 +1,1 @@
-{"uid":"83edc06c07f9ae9e47eb6dd1b683e4e2","name":"packages","children":[]}
+{"uid":"83edc06c07f9ae9e47eb6dd1b683e4e2","name":"packages","children":[{"name":"tests.test_basket","children":[{"name":"test_delete_the_book_from_basket","uid":"c08bc81faa997db8","parentUid":"3a5e776a17de71885f16bcc0c47c595c","status":"skipped","time":{"start":1776939667462,"stop":1776939667462,"duration":0},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":[],"tags":[]}],"uid":"tests.test_basket"}]}
