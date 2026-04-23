@@ -47,6 +47,12 @@ jobs:
       with: 
         name: allure-results
     - run: allure generate -c allure-results -o allure-report
+    - name: Save allure report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: allure-report
+
 
   publish-report:
     runs-on: ubuntu-latest
